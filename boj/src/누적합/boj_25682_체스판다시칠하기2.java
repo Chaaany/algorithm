@@ -8,6 +8,8 @@ public class boj_25682_체스판다시칠하기2 {
     private static int N, M, K;
     private static String[][] board;
 
+    private static int[][][] rowSum;
+
     public static void main(String[] args) throws IOException {
         // 1. M x N 크기의 2차원 배열 입력
         // 2. 검, 흰 두 가지의 색으로 칠해져 있음
@@ -28,14 +30,18 @@ public class boj_25682_체스판다시칠하기2 {
         K = Integer.parseInt(inputValue[2]);
 
         int answer = 4000001;
-        board = new String[N][M];
+
+        board = new String[N+1][M+1];
+        rowSum = new int[N+1][M+1][2]; // 0 = B, 1 = W
 
         for (int i = 0; i < N; i++) {
             String temp[] = br.readLine().split("");
             for (int j = 0; j < M; j++) {
-                board[i][j] = temp[j];
+                board[i+1][j+1] = temp[j+1];
+                countColor(i, j, temp[j+1]);
             }
         }
+
 
         for (int i = 0; i <= N - K; i++) {
             for (int j = 0; j <= M - K; j++) {
@@ -46,10 +52,9 @@ public class boj_25682_체스판다시칠하기2 {
 
     }
 
-    private static void check(int i, int j) {
+    private static void countColor(int i, int j, String s) {
+        if(i % 2 == j % 2) {
 
-
-
-
+        }
     }
 }
